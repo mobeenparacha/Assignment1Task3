@@ -1,5 +1,5 @@
-Select DISTINCT a.FirstName,a.LastName,a.MemberID
-    -> FROM (Select m.FirstName,m.LastName,m.MemberID from Member m INNER JOIN Entry e on m.MemberID=e.MemberID) as a
-    -> Where a.MemberID IN
-    -> (Select DISTINCT b.MemberID from (select e.MemberID,count(distinct e.Year) as y From Entry as e GROUP BY e.MemberID) as b where y>2);
+Select DISTINCT m.FirstName,m.LastName,m.MemberID
+     FROM (Member m INNER JOIN Entry e on m.MemberID=e.MemberID)
+     Where m.MemberID IN
+     (Select DISTINCT a.MemberID from (select b.MemberID,count(distinct b.Year) as c From Entry as b GROUP BY b.MemberID) as a where c>2);
 
