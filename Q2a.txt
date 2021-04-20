@@ -1,4 +1,4 @@
 select FirstName,LastName,MemberID
-    -> from Member
-    -> Where Coach IS NULL;
+    from Member
+    Where Coach IS NULL;
 
